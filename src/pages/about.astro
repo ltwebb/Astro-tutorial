@@ -1,5 +1,21 @@
 ---
+const pageTitle = "About Me";
 
+const identity = {
+    firstName: "Sarah",
+    country: "Candada",
+    occupation: "Technical Writer",
+    hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const bookTitle = "Sky Lights"
+const bookAuthor = "Lori Webb"
 ---
 
 <html lang="en">
@@ -8,7 +24,7 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>About Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
         <a href="/">Home</a>
@@ -16,8 +32,27 @@
         <a href="/blog/">Blog</a>
 
 
-		<h1>About Astro</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</body>
+		<h1>{pageTitle}</h1>
+        
+        <p>{ bookTitle && <p>I wrote a book called {bookTitle}</p> } </p>
+        <p>Here are a few facts about me:</p>
+            <ul>
+                <li>My name is {identity.firstName}.</li>
+                <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+                {identity.hobbies.length >= 2 &&
+                    <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+                }
+            </ul>
+            <p>My skills are:</p>
+                <ul>
+                {skills.map((skill) => <li>{skill}</li>)}
+                </ul>
+
+                {happy && <p>I am happy to be learning Astro!</p>}
+
+{finished && <p>I finished this tutorial!</p>}
+
+{goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+
+    </body>
 </html>
